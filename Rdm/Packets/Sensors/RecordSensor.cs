@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Haukcode.Rdm.Packets.Sensors
+namespace VergeAero.Rdm.Packets.Sensors
 {
     /// <summary>
     /// This parameter instructs devices such as dimming racks that monitor load changes to store the

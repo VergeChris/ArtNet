@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Haukcode.Rdm;
 using System.Net;
+using VergeAero.Rdm;
 
-namespace Haukcode.Sockets
+namespace VergeAero.Sockets
 {
     public interface IRdmSocket
     {

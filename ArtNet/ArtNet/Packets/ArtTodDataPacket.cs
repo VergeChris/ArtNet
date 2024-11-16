@@ -1,8 +1,8 @@
-using Haukcode.ArtNet.IO;
-using Haukcode.Rdm;
 using System.Collections.Generic;
+using VergeAero.ArtNet.IO;
+using VergeAero.Rdm;
 
-namespace Haukcode.ArtNet.Packets
+namespace VergeAero.ArtNet.Packets
 {
     public class ArtTodDataPacket : ArtNetPacket
     {

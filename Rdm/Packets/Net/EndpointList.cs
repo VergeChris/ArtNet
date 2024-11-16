@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Haukcode.Rdm.Packets.Net
+namespace VergeAero.Rdm.Packets.Net
 {
     /// <summary>
     /// This parameter is used to retrieve a packed list of all endpoints that exist on an E1.33 device, with the exception of the Management Endpoint.

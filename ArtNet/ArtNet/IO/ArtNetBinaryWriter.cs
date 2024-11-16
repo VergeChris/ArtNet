@@ -3,7 +3,7 @@ using System.IO;
 using System.Net;
 using System.Text;
 
-namespace Haukcode.ArtNet.IO
+namespace VergeAero.ArtNet.IO
 {
     public class ArtNetBinaryWriter
     {
@@ -44,6 +44,11 @@ namespace Haukcode.ArtNet.IO
         }
 
         public void WriteByteArray(byte[] value)
+        {
+            this.writer.Write(value);
+        }
+
+        public void WriteByteArray(ReadOnlySpan<byte> value)
         {
             this.writer.Write(value);
         }

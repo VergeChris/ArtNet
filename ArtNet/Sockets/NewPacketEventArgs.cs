@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Net;
 
-namespace Haukcode.Sockets
+namespace VergeAero.Sockets
 {
     public class NewPacketEventArgs<TPacketType> : EventArgs
     {

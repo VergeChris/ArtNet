@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Haukcode.Rdm.Packets.Net
+namespace VergeAero.Rdm.Packets.Net
 {
     public class EndpointIdentify
     {

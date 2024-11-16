@@ -28,7 +28,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Haukcode.Rdm.Packets.Status
+namespace VergeAero.Rdm.Packets.Status
 {
     /// <summary>
     /// Obtains a message from the responders message queue.

@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Net;
-using Haukcode.ArtNet.IO;
-using Haukcode.ArtNet.Sockets;
+using VergeAero.ArtNet.IO;
+using VergeAero.ArtNet.Sockets;
 
-namespace Haukcode.ArtNet.Packets
+namespace VergeAero.ArtNet.Packets
 {
     public class ArtPollReplyPacket : ArtNetPacket
     {

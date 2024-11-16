@@ -1,8 +1,8 @@
-using Haukcode.ArtNet.IO;
 using System;
 using System.IO;
+using VergeAero.ArtNet.IO;
 
-namespace Haukcode.ArtNet.Packets
+namespace VergeAero.ArtNet.Packets
 {
     public class ArtNetPacket
     {

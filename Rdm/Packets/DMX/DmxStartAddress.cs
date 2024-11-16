@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Haukcode.Rdm.Packets.DMX
+namespace VergeAero.Rdm.Packets.DMX
 {
     /// <summary>
     /// This parameter is used to set or get the DMX512 start address.

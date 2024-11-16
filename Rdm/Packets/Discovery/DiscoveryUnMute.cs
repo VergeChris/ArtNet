@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Haukcode.Rdm.Packets.Discovery
+namespace VergeAero.Rdm.Packets.Discovery
 {
     /// <summary>
     /// A responder port shall clear its Mute flag when it receives this message containing its UID, or a broadcast address.

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Haukcode.Rdm.Packets.Discovery
+namespace VergeAero.Rdm.Packets.Discovery
 {
     /// <summary>
     /// This message and response are used for the device discovery process.

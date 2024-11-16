@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Haukcode.Rdm.Packets.Product
+namespace VergeAero.Rdm.Packets.Product
 {
     public enum ProductCategories
     {

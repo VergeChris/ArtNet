@@ -3,7 +3,7 @@ using System.IO;
 using System.Net;
 using System.Text;
 
-namespace Haukcode.Rdm
+namespace VergeAero.Rdm
 {
     public class RdmBinaryReader
     {

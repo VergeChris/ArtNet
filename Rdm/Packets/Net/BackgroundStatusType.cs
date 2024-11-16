@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Haukcode.Rdm.Packets.Status;
+using VergeAero.Rdm.Packets.Status;
 
-namespace Haukcode.Rdm.Packets.Net
+namespace VergeAero.Rdm.Packets.Net
 {
     public class BackgroundStatusType
     {

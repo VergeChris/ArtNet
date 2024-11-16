@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Haukcode.Rdm.Packets
+namespace VergeAero.Rdm.Packets
 {
     public class RdmRawPacket:RdmPacket
     {

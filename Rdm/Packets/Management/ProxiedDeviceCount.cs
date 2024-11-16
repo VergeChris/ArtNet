@@ -28,7 +28,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Haukcode.Rdm.Packets.Management
+namespace VergeAero.Rdm.Packets.Management
 {
     /// <summary>
     /// This parameter is used to identify the number of devices being represented by a proxy and

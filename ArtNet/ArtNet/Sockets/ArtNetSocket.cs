@@ -1,16 +1,17 @@
-using Haukcode.ArtNet.IO;
-using Haukcode.ArtNet.Packets;
-using Haukcode.Rdm;
-using Haukcode.Sockets;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
+using VergeAero.ArtNet.IO;
+using VergeAero.ArtNet.Packets;
+using VergeAero.Net;
+using VergeAero.Rdm;
+using VergeAero.Sockets;
 
-namespace Haukcode.ArtNet.Sockets
+namespace VergeAero.ArtNet.Sockets
 {
-    public class ArtNetSocket : Socket, IRdmSocket
+    public class ArtNetSocket : Socket, IRdmSocket, IListenInterface, IDMXStream, ITimecodeStream
     {
         public const int Port = 6454;
 
@@ -18,7 +19,7 @@ namespace Haukcode.ArtNet.Sockets
         public event EventHandler<NewPacketEventArgs<ArtNetPacket>> NewPacket;
         public event EventHandler<NewPacketEventArgs<RdmPacket>> NewRdmPacket;
         public event EventHandler<NewPacketEventArgs<RdmPacket>> RdmPacketSent;
-
+        private ISocketConfiguration _listenConfiguration;
         public ArtNetSocket(UId rdmId)
             : base(System.Net.Sockets.AddressFamily.InterNetwork, System.Net.Sockets.SocketType.Dgram, System.Net.Sockets.ProtocolType.Udp)
         {
@@ -238,6 +239,41 @@ namespace Haukcode.ArtNet.Sockets
             PortOpen = false;
 
             base.Dispose(disposing);
+        }
+
+        public void ConfigureListen(ISocketConfiguration config)
+        {
+            _listenConfiguration = config;
+        }
+
+        public void Open()
+        {
+            _listenConfiguration?.ConfigureSocket(this);
+            Open(IPAddress.Any, IPAddress.Broadcast);
+        }
+
+        public bool IsListening() => PortOpen;
+
+        HashSet<IDMXTarget> _dmxTargets = new HashSet<IDMXTarget>();
+        public void RegisterDMXTarget(IDMXTarget target)
+        {
+            _dmxTargets.Add(target);
+        }
+
+        public void RemoveDMXTarget(IDMXTarget target)
+        {
+            _dmxTargets.Remove(target);
+        }
+
+        HashSet<ITimecodeTarget> _timecodeTargets = new HashSet<ITimecodeTarget>();
+        public void RegisterTimecodeTarget(ITimecodeTarget target)
+        {
+            _timecodeTargets.Add(target);
+        }
+
+        public void RemoveTimecodeTarget(ITimecodeTarget target)
+        {
+            _timecodeTargets.Remove(target);
         }
     }
 }

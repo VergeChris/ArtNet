@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Net;
-using Haukcode.ArtNet.IO;
+using VergeAero.ArtNet.IO;
 
-namespace Haukcode.ArtNet.Packets
+namespace VergeAero.ArtNet.Packets
 {
     public class ArtSyncPacket : ArtNetPacket
     {

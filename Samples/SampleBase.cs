@@ -1,8 +1,8 @@
-﻿using Haukcode.ArtNet.Sockets;
-using System;
+﻿using System;
 using System.Net;
+using VergeAero.ArtNet.Sockets;
 
-namespace Haukcode.Samples
+namespace VergeAero.Samples
 {
     public abstract class SampleBase : IDisposable
     {

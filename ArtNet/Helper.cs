@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.NetworkInformation;
 
-namespace Haukcode.ArtNet
+namespace VergeAero.ArtNet
 {
     public static class Helper
     {

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
-using Haukcode.ArtNet.IO;
-using Haukcode.ArtNet.Packets;
+using VergeAero.ArtNet.Packets;
+using VergeAero.ArtNet.IO;
 
-namespace Haukcode.ArtNet.Packets
+namespace VergeAero.ArtNet.Packets
 {
     public class ArtAddressPacket : ArtNetPacket
     {

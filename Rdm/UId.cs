@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Haukcode.Rdm
+namespace VergeAero.Rdm
 {
     public class UId : IComparable
     {

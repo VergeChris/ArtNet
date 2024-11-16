@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Haukcode.Rdm.Packets.Control
+namespace VergeAero.Rdm.Packets.Control
 {
     /// <summary>
     /// This parameter is used to instruct the responder to reset itself. This parameter shall also clear the

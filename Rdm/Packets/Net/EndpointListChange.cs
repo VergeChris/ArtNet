@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Haukcode.Rdm.Packets.Net
+namespace VergeAero.Rdm.Packets.Net
 {
     /// <summary>
     /// This parameter returns a unique ‘change number’ as a means for controllers to identify if the endpoint list has changed.

@@ -28,7 +28,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Haukcode.Rdm.Packets.Management
+namespace VergeAero.Rdm.Packets.Management
 {
     /// <summary>
     /// This parameter is used to retrieve the UIDs from a device identified as a proxy during discovery.

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 
-namespace Haukcode.Rdm.Packets.Net
+namespace VergeAero.Rdm.Packets.Net
 {
     public class TcpCommsStatus
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Haukcode.Rdm.Packets.Product
+namespace VergeAero.Rdm.Packets.Product
 {
     /// <summary>
     /// This parameter provides an ASCII text response with the Manufacturer name for the device of up

@@ -28,7 +28,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Haukcode.Rdm.Packets.Status
+namespace VergeAero.Rdm.Packets.Status
 {
     /// <summary>
     /// This parameter is used to request an ASCII text description of a given Status ID. The description

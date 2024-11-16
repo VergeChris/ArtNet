@@ -1,12 +1,12 @@
-﻿using Haukcode.Rdm;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Net.Sockets;
 using System.Threading;
+using VergeAero.Rdm;
 
-namespace Haukcode.Sockets
+namespace VergeAero.Sockets
 {
     /// <summary>
     /// This RDM socket provides a reliable means of transporting RDM packets over an unreliable network. It

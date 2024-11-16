@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using System.ComponentModel;
-using Haukcode.Rdm.Packets.Management;
-using Haukcode.Rdm.Packets;
+using VergeAero.Rdm.Packets.Management;
+using VergeAero.Rdm.Packets;
 
-namespace Haukcode.Rdm
+namespace VergeAero.Rdm
 {
     public abstract class RdmPacket
     {

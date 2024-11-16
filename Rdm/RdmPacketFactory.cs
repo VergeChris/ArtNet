@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Haukcode.Rdm.Packets.Net;
-using Haukcode.Rdm.Packets.DMX;
-using Haukcode.Rdm.Packets.Product;
-using Haukcode.Rdm.Packets.Parameters;
-using Haukcode.Rdm.Packets.Control;
-using Haukcode.Rdm.Packets.Status;
-using Haukcode.Rdm.Packets.Power;
-using Haukcode.Rdm.Packets.Management;
-using Haukcode.Rdm.Packets.Discovery;
-using Haukcode.Rdm.Packets.Configuration;
+using VergeAero.Rdm.Packets.Configuration;
+using VergeAero.Rdm.Packets.Control;
+using VergeAero.Rdm.Packets.Discovery;
+using VergeAero.Rdm.Packets.DMX;
+using VergeAero.Rdm.Packets.Management;
+using VergeAero.Rdm.Packets.Net;
+using VergeAero.Rdm.Packets.Parameters;
+using VergeAero.Rdm.Packets.Power;
+using VergeAero.Rdm.Packets.Product;
+using VergeAero.Rdm.Packets.Status;
 
-namespace Haukcode.Rdm
+namespace VergeAero.Rdm
 {
     public static class RdmPacketFactory
     {

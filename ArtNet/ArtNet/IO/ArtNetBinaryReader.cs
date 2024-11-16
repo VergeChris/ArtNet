@@ -3,7 +3,7 @@ using System.IO;
 using System.Net;
 using System.Text;
 
-namespace Haukcode.ArtNet.IO
+namespace VergeAero.ArtNet.IO
 {
     public class ArtNetBinaryReader
     {

@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Net;
 
-namespace Haukcode.Samples
+namespace VergeAero.Samples
 {
     public class Program
     {

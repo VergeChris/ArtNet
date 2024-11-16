@@ -1,8 +1,8 @@
-﻿using Haukcode.Rdm;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Net;
+using VergeAero.Rdm;
 
-namespace Haukcode.Sockets
+namespace VergeAero.Sockets
 {
     public class RdmEndPoint : IPEndPoint
     {

@@ -1,9 +1,9 @@
-﻿using Haukcode.ArtNet.Packets;
-using Haukcode.Sockets;
-using System;
+﻿using System;
 using System.Net;
+using VergeAero.ArtNet.Packets;
+using VergeAero.Sockets;
 
-namespace Haukcode.Samples
+namespace VergeAero.Samples
 {
     public class SampleCapture : SampleBase
     {

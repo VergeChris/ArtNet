@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Haukcode.Rdm.Packets.Control
+namespace VergeAero.Rdm.Packets.Control
 {
     /// <summary>
     /// Different modes for identifying fixtures.

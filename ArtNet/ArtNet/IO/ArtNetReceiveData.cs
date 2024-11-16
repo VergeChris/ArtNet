@@ -1,4 +1,4 @@
-namespace Haukcode.ArtNet.IO
+namespace VergeAero.ArtNet.IO
 {
     public class ArtNetReceiveData
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Globalization;
 
-namespace Haukcode.Rdm.Packets.Product
+namespace VergeAero.Rdm.Packets.Product
 {
     /// <summary>
     /// This parameter is used to change the language of the messages from the device.

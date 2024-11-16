@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Haukcode
+namespace VergeAero
 {
     public class InvalidPacketException : InvalidOperationException
     {

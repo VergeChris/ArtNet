@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Haukcode.Rdm.Packets.DMX
+namespace VergeAero.Rdm.Packets.DMX
 {
     /// <summary>
     /// This parameter provides a mechanism for block addressing the DMX512 start address of sub-devices. 

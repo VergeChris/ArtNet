@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Haukcode.Rdm.Packets.DMX
+namespace VergeAero.Rdm.Packets.DMX
 {
     /// <summary>
     /// This parameter shall be used for requesting the default values for the given DMX512 slot offsets

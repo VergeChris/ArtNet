@@ -1,6 +1,6 @@
 using System;
 
-namespace Haukcode.ArtNet
+namespace VergeAero.ArtNet
 {
     public enum ArtNetOpCodes : ushort
     {

@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Haukcode.Rdm;
-using Haukcode.ArtNet.IO;
+using VergeAero.ArtNet.IO;
+using VergeAero.Rdm;
 
-namespace Haukcode.ArtNet.Packets
+namespace VergeAero.ArtNet.Packets
 {
     public class ArtRdmSubPacket : ArtNetPacket
     {
