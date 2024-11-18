@@ -148,6 +148,21 @@ namespace VergeAero.ArtNet.Sockets
                     RdmPacket rdm = RdmPacket.ReadPacket(new RdmBinaryReader(new MemoryStream(rdmPacket.RdmData)));
                     NewRdmPacket(this, new NewPacketEventArgs<RdmPacket>(source, destination, rdm));
                 }
+                else if (packet is ArtNetDmxPacket dmxPacket)
+                {
+                    var genericDMXPacket = new DMXPacket(dmxPacket.Sequence, dmxPacket.Universe, dmxPacket.DmxData) { Protocol = DMXProtocol.Artnet };
+                    foreach (var dmxTarget in _dmxTargets)
+                    {
+                        dmxTarget.OnReceiveDMXPacket(genericDMXPacket.Universe, genericDMXPacket);
+                    }
+                }
+                else if (packet is ArtTimecodePacket timecodePacket)
+                {
+                    foreach (var timecodeTarget in _timecodeTargets)
+                    {
+                        timecodeTarget.OnReceiveTimecode(timecodePacket.Timecode);
+                    }
+                }
             }
         }
 

@@ -89,6 +89,8 @@ namespace VergeAero.ArtNet.Packets
         {
             switch ((ArtNetOpCodes)data.OpCode)
             {
+                case ArtNetOpCodes.TimeCode:
+                    return new ArtNetPacket(data);
                 case ArtNetOpCodes.Poll:
                     return new ArtPollPacket(data);
 
