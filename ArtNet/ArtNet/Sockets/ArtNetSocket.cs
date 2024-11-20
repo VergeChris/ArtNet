@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
+using UnityEngine;
 using VergeAero.ArtNet.IO;
 using VergeAero.ArtNet.Packets;
 using VergeAero.Net;
@@ -91,7 +92,7 @@ namespace VergeAero.ArtNet.Sockets
             {
                 EndPoint localPort = new IPEndPoint(IPAddress.Any, Port);
                 var receiveState = new ArtNetReceiveData();
-                BeginReceiveMessageFrom(receiveState.buffer, 0, receiveState.bufferSize, SocketFlags.None, ref localPort, new AsyncCallback(OnReceive), receiveState);
+                BeginReceiveFrom(receiveState.buffer, 0, receiveState.bufferSize, SocketFlags.None, ref localPort, OnReceive, receiveState);
             }
             catch (Exception ex)
             {
@@ -108,20 +109,18 @@ namespace VergeAero.ArtNet.Sockets
                 try
                 {
                     var receiveState = (ArtNetReceiveData)(state.AsyncState);
-
                     if (receiveState != null)
                     {
                         var socketFlags = SocketFlags.None;
-                        receiveState.DataLength = EndReceiveMessageFrom(state, ref socketFlags, ref remoteEndPoint, out var ipPacketInfo);
-
+                        receiveState.DataLength = EndReceiveFrom(state, ref remoteEndPoint);
                         //Protect against UDP loopback where we receive our own packets, except for poll/pollreply commands.
                         if (receiveState.Valid && (!LocalEndPoint.Equals(remoteEndPoint) ||
                             receiveState.OpCode == (ushort)ArtNetOpCodes.Poll ||
                             receiveState.OpCode == (ushort)ArtNetOpCodes.PollReply))
                         {
                             LastPacket = DateTime.Now;
-
-                            ProcessPacket((IPEndPoint)remoteEndPoint, new IPEndPoint(ipPacketInfo.Address, ((IPEndPoint)LocalEndPoint).Port), ArtNetPacket.Create(receiveState, CustomPacketCreator));
+                            IPEndPoint destination = new IPEndPoint(IPAddress.Any, Port);//new IPEndPoint(ipPacketInfo.Address, ((IPEndPoint)LocalEndPoint).Port);
+                            ProcessPacket((IPEndPoint)remoteEndPoint, destination, ArtNetPacket.Create(receiveState, CustomPacketCreator));
                         }
                     }
                 }
@@ -150,10 +149,18 @@ namespace VergeAero.ArtNet.Sockets
                 }
                 else if (packet is ArtNetDmxPacket dmxPacket)
                 {
-                    var genericDMXPacket = new DMXPacket(dmxPacket.Sequence, dmxPacket.Universe, dmxPacket.DmxData) { Protocol = DMXProtocol.Artnet };
-                    foreach (var dmxTarget in _dmxTargets)
+                    //Convert to local universe
+                    for (int i = 0; i < _filteredUniverses.Count; i++)
                     {
-                        dmxTarget.OnReceiveDMXPacket(genericDMXPacket.Universe, genericDMXPacket);
+                        if (dmxPacket.Universe == _filteredUniverses[i])
+                        {
+                            var genericDMXPacket = new DMXPacket(dmxPacket.Sequence, (short)_filteredUniverses[i], dmxPacket.DmxData) { Protocol = DMXProtocol.Artnet };
+                            foreach (var dmxTarget in _dmxTargets)
+                            {
+                                dmxTarget.OnReceiveDMXPacket(_filteredUniverses[i], genericDMXPacket);
+                            }
+                            break;
+                        }
                     }
                 }
                 else if (packet is ArtTimecodePacket timecodePacket)
@@ -264,11 +271,22 @@ namespace VergeAero.ArtNet.Sockets
         public void Open()
         {
             _listenConfiguration?.ConfigureSocket(this);
-            Open(IPAddress.Any, IPAddress.Broadcast);
+            PortOpen = true;
+            StartReceive();
         }
 
         public bool IsListening() => PortOpen;
+        private List<int> _filteredUniverses = new List<int>();
 
+        public void ClearDMXFilters()
+        {
+            _filteredUniverses.Clear();
+        }
+        public void AddDMXFilter(int universe)
+        {
+            _filteredUniverses.Add(universe);
+        }
+        
         HashSet<IDMXTarget> _dmxTargets = new HashSet<IDMXTarget>();
         public void RegisterDMXTarget(IDMXTarget target)
         {
