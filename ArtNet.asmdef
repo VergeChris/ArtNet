@@ -1,0 +1,20 @@
+{
+    "name": "ArtNet",
+    "rootNamespace": "",
+    "references": [
+        "VergeAero.Net",
+        "DMX",
+        "ProtocolNetworkUtilities",
+        "Timecode",
+        "VergeAero.Wrapper"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

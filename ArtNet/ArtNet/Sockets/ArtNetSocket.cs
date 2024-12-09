@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
-using UnityEngine;
 using VergeAero.ArtNet.IO;
 using VergeAero.ArtNet.Packets;
 using VergeAero.Net;
@@ -21,6 +20,13 @@ namespace VergeAero.ArtNet.Sockets
         public event EventHandler<NewPacketEventArgs<RdmPacket>> NewRdmPacket;
         public event EventHandler<NewPacketEventArgs<RdmPacket>> RdmPacketSent;
         private ISocketConfiguration _listenConfiguration;
+        public bool IsOpen => IsListening();
+        public bool IsListening() => PortOpen;
+        
+        private List<int> _filteredUniverses = new List<int>();
+        public DateTime? LastPacket { get; protected set; } = null;
+        private Dictionary<int, UniverseInfo> _dmxUniverseStats = new Dictionary<int, UniverseInfo>();
+        public IEnumerable<UniverseInfo> UniverseStats => _dmxUniverseStats.Values;
         public ArtNetSocket(UId rdmId)
             : base(System.Net.Sockets.AddressFamily.InterNetwork, System.Net.Sockets.SocketType.Dgram, System.Net.Sockets.ProtocolType.Udp)
         {
@@ -70,8 +76,6 @@ namespace VergeAero.ArtNet.Sockets
                 return GetBroadcastAddress(LocalIP, LocalSubnetMask);
             }
         }
-
-        public DateTime? LastPacket { get; protected set; } = null;
 
         public void Open(IPAddress localIp, IPAddress localSubnetMask, IPAddress bindAddress = null)
         {
@@ -155,6 +159,7 @@ namespace VergeAero.ArtNet.Sockets
                         if (dmxPacket.Universe == _filteredUniverses[i])
                         {
                             var genericDMXPacket = new DMXPacket(dmxPacket.Sequence, (short)_filteredUniverses[i], dmxPacket.DmxData) { Protocol = DMXProtocol.Artnet };
+                            _dmxUniverseStats[_filteredUniverses[i]].Update(genericDMXPacket);
                             foreach (var dmxTarget in _dmxTargets)
                             {
                                 dmxTarget.OnReceiveDMXPacket(_filteredUniverses[i], genericDMXPacket);
@@ -275,16 +280,21 @@ namespace VergeAero.ArtNet.Sockets
             StartReceive();
         }
 
-        public bool IsListening() => PortOpen;
-        private List<int> _filteredUniverses = new List<int>();
-
         public void ClearDMXFilters()
         {
             _filteredUniverses.Clear();
+            _dmxUniverseStats.Clear();
         }
         public void AddDMXFilter(int universe)
         {
+            if(_filteredUniverses.Contains(universe))
+                return;
+            
             _filteredUniverses.Add(universe);
+            _dmxUniverseStats.Add(universe, new UniverseInfo()
+            {
+                Universe = universe
+            });
         }
         
         HashSet<IDMXTarget> _dmxTargets = new HashSet<IDMXTarget>();
