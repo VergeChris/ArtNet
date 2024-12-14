@@ -172,7 +172,7 @@ namespace VergeAero.ArtNet.Sockets
                 {
                     foreach (var timecodeTarget in _timecodeTargets)
                     {
-                        timecodeTarget.OnReceiveTimecode(timecodePacket.Timecode);
+                        timecodeTarget.OnReceiveTimecode(timecodePacket.Timecode, this);
                     }
                 }
             }
@@ -309,6 +309,8 @@ namespace VergeAero.ArtNet.Sockets
         }
 
         HashSet<ITimecodeTarget> _timecodeTargets = new HashSet<ITimecodeTarget>();
+        public string SourceName => "Artnet";
+
         public void RegisterTimecodeTarget(ITimecodeTarget target)
         {
             _timecodeTargets.Add(target);
