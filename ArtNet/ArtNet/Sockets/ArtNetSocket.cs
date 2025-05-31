@@ -309,6 +309,7 @@ namespace VergeAero.ArtNet.Sockets
         }
 
         HashSet<ITimecodeTarget> _timecodeTargets = new HashSet<ITimecodeTarget>();
+        public bool IsTimecodeSourceActive => IsListening();
         public string SourceName => "Artnet";
 
         public void RegisterTimecodeTarget(ITimecodeTarget target)
